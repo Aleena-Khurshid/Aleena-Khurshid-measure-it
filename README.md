@@ -47,7 +47,7 @@ Outputs: `calibration\camera_params.npz` and `calibration\calibration_report.jso
 python inference\measure.py --image path\to\photo.jpg --ref-w-mm 85.6 --ref-h-mm 54.0
 ```
 
-Replace the reference size with the calliper-measured size of the cardboard piece. The values above are a placeholder. The script prints paper width and height, the scale, and two rectangularity scores. It writes an overlay image. It prints `RESULT: object not found` or `RESULT: reference not found` when it cannot find the paper or the reference.
+Replace the reference size with the calliper-measured size of the cardboard piece. The values above are a placeholder. The script prints paper width and height, the scale, and two rectangularity scores. It writes an overlay image and a confidence value. The confidence is a shape score (the smaller of the paper and reference rectangularity scores), not a probability. It prints `RESULT: object not found` or `RESULT: reference not found` when it cannot find the paper or the reference.
 
 ## Dataset summary
 

@@ -75,3 +75,14 @@ Totals: 71 photos received. 6 rejected in total this round (q09, r05, s01, s03, 
 - The 70 target is met on count only. Masks, the committed 70/20/10 file list, the model, and the metrics are NOT done.
 - Portrait measurement: t01 gives paper 289.6 x 209.2 mm, the same as r01, because they are the same photo.
 
+## Final status of the mandatory floor (items 1 to 4), 01:00
+
+| Item | Status | Evidence / what is missing |
+|---|---|---|
+| 1. Calibrated camera | Done for calibration; undistortion NOT verified | 20 board photos, RMS 0.092 px (free k3), saved and loaded. Undistorted corners still curve, so mm values are not verified. |
+| 2. Dataset of 70, masks, fixed 70/20/10 split | NOT done | 70 photos on count (60 unique in batch folders plus 10 earlier; the 10 earlier photos are not checksum-checked). No masks. No committed split for 70 photos (split_v1.csv lists 100 IDs and is wrong). |
+| 3. Trained segmentation model and metrics | NOT done | No model trained. Current method is classical thresholding, which is not a trained model. No IoU, mAP, precision or recall. |
+| 4. One command, image to mm | Partly done | `inference/measure.py` outputs paper width and height in mm, a shape-score confidence, an overlay, and RESULT lines for object-not-found and reference-not-found. The reference size is a ruler measurement (129 x 144 mm). Undistortion is not verified, and landscape photos are refused by the portrait-only calibration. |
+
+Items 5 to 10 and the Plan/PR steps are not started or not complete. A pull request to main is waiting for the author's approval.
+

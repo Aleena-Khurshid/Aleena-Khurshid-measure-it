@@ -18,6 +18,7 @@ import numpy as np
 
 MIN_PAPER_FRACTION = 0.05   # paper must cover at least 5% of the image
 MIN_REF_FRACTION = 0.002    # reference must cover at least 0.2% of the image
+MIN_PAPER_RECTANGULARITY = 0.90  # paper must look like a rectangle
 MIN_REF_RECTANGULARITY = 0.90  # reference must look like a rectangle (0.99 on good photos, 0.50 on brown carpet)
 
 
@@ -112,6 +113,9 @@ def main():
     if ref is None:
         print("RESULT: reference not found")
         return
+    if paper_rect < MIN_PAPER_RECTANGULARITY:
+        print(f"RESULT: object not found (paper shape score {paper_rect:.3f} is below {MIN_PAPER_RECTANGULARITY})")
+        return
 
     ref_long_px, ref_short_px = rect_sides_px(ref)
     ref_long_mm, ref_short_mm = max(args.ref_w_mm, args.ref_h_mm), min(args.ref_w_mm, args.ref_h_mm)
@@ -127,7 +131,10 @@ def main():
     os.makedirs(os.path.dirname(args.overlay) or ".", exist_ok=True)
     cv2.imwrite(args.overlay, overlay)
 
+    confidence = min(paper_rect, ref_rect)  # shape score, not a probability
+    print(f"RESULT: ok")
     print(f"Paper sides: {long_mm:.1f} mm x {short_mm:.1f} mm (long x short)")
+    print(f"Confidence (shape score, min of paper and reference rectangularity): {confidence:.3f}")
     print(f"Scale: {mm_per_px:.4f} mm per pixel")
     print(f"Rectangularity paper: {paper_rect:.3f}, reference: {ref_rect:.3f}")
     print(f"Overlay: {args.overlay}")
