@@ -29,7 +29,7 @@ Checked at 2026-11-18 00:10 (Asia/Karachi). A box is ticked only when the eviden
 
 ## Dataset status (checked 2026-11-18 00:45)
 
-- 52 photos of paper plus cardboard (all taken by the author, confirmed by the author on 00:43 for the 16 received at 00:40 and the 14 received at 00:41): 10 earlier photos (1200 × 1600, portrait), 12 photos (1280 × 960, landscape, confirmed as taken by the author), and 16 photos (1280 × 960, landscape, received 00:40; author confirmation pending). Target is 70. Not met.
+- 65 photos of paper plus cardboard (author confirmed all of them) (all taken by the author, confirmed by the author on 00:43 for the 16 received at 00:40 and the 14 received at 00:41): 10 earlier photos (1200 × 1600, portrait), 12 photos (1280 × 960, landscape, confirmed as taken by the author), and 16 photos (1280 × 960, landscape, received 00:40; author confirmation pending). Target is 70. Not met.
 - The 12 new photos are landscape. The calibration was made on portrait photos (960 × 1280), so `measure.py` now refuses them with `RESULT: calibration mismatch`. They need a calibration in landscape orientation before they can be measured.
 - Photos are not flipped, and flipped copies are not counted.
 - Of the 16 newest photos, 15 detect both paper and cardboard (paper score 0.98 to 0.99). One photo (16th) detects the paper (0.93) but not the cardboard.
@@ -42,4 +42,16 @@ Checked at 2026-11-18 00:10 (Asia/Karachi). A box is ticked only when the eviden
 - Photo q02: paper 283.3 x 209.4 mm (scale 0.470 mm/px). Ruler estimate of the paper: about 290 x 205 mm.
 - Photo q03: paper 288.1 x 231.3 mm (scale 0.433 mm/px). The short side is 13% above the ruler estimate.
 - These are not verified. The reference is a ruler measurement, the paper is a ruler estimate, and the undistortion is not checked. No calliper data exists yet.
+
+## Results on 4 more portrait photos from the 13-photo batch (saved calibration, reference 129 x 144 mm)
+
+- r01: paper 289.6 x 209.2 mm
+- r12: paper 291.5 x 209.2 mm
+- r13: paper 289.9 x 208.3 mm
+- r11: paper 315.4 x 234.9 mm. This is 9% and 15% above the others, so it is an outlier. Not explained yet; the paper may be tilted or near the frame edge.
+- r05 (portrait): paper detected at 0.89, cardboard not found. Rejected.
+
+Three of the four results are within 1 to 2% of the ruler estimate of 290 x 205 mm. This is a consistency check only, not a calliper accuracy result.
+
+Dataset: 65 photos are recorded. Of these, 6 are portrait and match the saved calibration (q02, q03, r01, r11, r12, r13). The other 59 are landscape and cannot be measured with the current calibration.
 
