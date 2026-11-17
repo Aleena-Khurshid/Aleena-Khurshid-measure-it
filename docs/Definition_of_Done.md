@@ -128,7 +128,7 @@ Interpretation: undistortion reduces the deviation, but the residual is still la
 
 ## Rules check (02:00, Asia/Karachi)
 
-- Test split v2 was scored (`58a8065`) and then replaced by v3 with retraining (`e6c8901`, `77f293b`). The reported test metrics are from v3, but the test set was changed after a result was seen. This is disclosed, not hidden.
+- Test split v2 was scored once (`58a8065`, provisional IoU 0.952) and then replaced by v3 with retraining (`e6c8901`, `77f293b`). This is a breach of the rule that the test split is fixed before training and never used for tuning or selection. The v2 result is superseded and must not be cited. The only reported test numbers are from v3 (IoU 0.991, precision 0.997, recall 0.995, 7 images). Checkpoint selection used only the validation set. Git history is not rewritten.
 - Per-photo numbers in the sections after 00:10 come from scratch folders that are not in this repository. They are not reproducible from the submission and are not evidence.
 - The calibration board is a screen, not a printed board. Sizes were measured with a ruler, not a calliper.
 - Masks are automatic, and the test metrics are measured against them.
