@@ -114,3 +114,14 @@ Items 5 to 10 and the Plan/PR steps are not started or not complete. A pull requ
 - Test (7 images, scored once): mask IoU 0.991, pixel precision 0.997, pixel recall 0.995. Weights `models/unet_small.pt`, sha256 bc2a5494...
 - Caveats: the test metric measures agreement with the auto-generated masks, not human labels. mAP@0.5 and mAP@0.5:0.95 are not computed. The 10 photos are landscape or portrait; undistortion is still NOT verified.
 
+
+## Undistortion check on calibration board (02:00, Asia/Karachi)
+
+Method: for each of the 21 portrait calibration photos, detect the 9 × 7 inner corners, fit a straight line to each row of 9 corners, and record the largest deviation of any corner from its row line. The check was run on the raw photo and on `cv2.undistort` with the saved camera matrix and distortion coefficients.
+
+| Image set | Mean of per-image max deviation | Worst single image |
+|---|---|---|
+| Raw | 37.2 px | 196.4 px |
+| Undistorted | 13.3 px | 110.7 px |
+
+Interpretation: undistortion reduces the deviation, but the residual is still large. Perspective keeps straight lines straight, so an accurate undistortion should leave row deviations of a few pixels. The result therefore does NOT verify undistortion. The row ordering from detection may also be wrong in some photos, which was not checked. Item 1 undistortion stays NOT verified. Item 6 (raw vs undistorted measurement error on instances) is not done.
