@@ -1,0 +1,4 @@
+# Versions used on the author's machine (Windows 11, Python 3, CPU only)
+opencv-python==5.0.0
+numpy==2.5.3
+torch==2.15.0

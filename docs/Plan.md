@@ -57,3 +57,11 @@ Deliverables 7–10 are not implemented. They are listed as not done in the Defi
 
 ## 8. Split file
 `dataset/split_v1.csv`: 100 image IDs (img_001 to img_100), shuffled with seed 42. Train 70, val 20, test 10. sha256 is recorded in the commit message.
+
+## Plan changes (recorded 2026-11-18 01:58)
+
+Recorded honestly, because the first draft of this plan above no longer matches what was done:
+- The calibration board is shown on a laptop screen, not printed. Its size is 9 × 7 inner corners, square 15 mm (ruler measured).
+- The reference object is cardboard (129 × 144 mm, ruler measured). The ArUco marker plan was not used.
+- The dataset is 74 photos, not 100. Split is `dataset/split_v3.csv` (52 / 15 / 7).
+- Items 2, 3 and 4 were not completed as planned: masks are automatic, undistortion is not verified, and mAP is not computed.
