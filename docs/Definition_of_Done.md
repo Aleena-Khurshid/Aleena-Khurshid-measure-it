@@ -29,10 +29,11 @@ Checked at 2026-11-18 00:10 (Asia/Karachi). A box is ticked only when the eviden
 
 ## Dataset status (checked 2026-11-18 00:45)
 
-- 38 photos of paper plus cardboard: 10 earlier photos (1200 × 1600, portrait), 12 photos (1280 × 960, landscape, confirmed as taken by the author), and 16 photos (1280 × 960, landscape, received 00:40; author confirmation pending). Target is 70. Not met.
+- 52 photos of paper plus cardboard (count includes the 14 received at 00:41; author confirmation pending for those 14 and the 16 from 00:40): 10 earlier photos (1200 × 1600, portrait), 12 photos (1280 × 960, landscape, confirmed as taken by the author), and 16 photos (1280 × 960, landscape, received 00:40; author confirmation pending). Target is 70. Not met.
 - The 12 new photos are landscape. The calibration was made on portrait photos (960 × 1280), so `measure.py` now refuses them with `RESULT: calibration mismatch`. They need a calibration in landscape orientation before they can be measured.
 - Photos are not flipped, and flipped copies are not counted.
 - Of the 16 newest photos, 15 detect both paper and cardboard (paper score 0.98 to 0.99). One photo (16th) detects the paper (0.93) but not the cardboard.
+- Of the 14 newest photos, 12 are landscape (1280 × 960) and 2 are portrait (960 × 1280). Both objects are detected in 12 of 14. One photo (q09) finds the paper weakly (0.90) and no cardboard. Only the 2 portrait photos match the saved calibration size and can be measured with it now.
 - No landscape calibration exists yet. The only landscape item received was a screen image (1920 × 1080), not a photo of a board, so it cannot be used for calibration.
 - No masks exist yet. No split is applied to these photos. No model is trained.
 
