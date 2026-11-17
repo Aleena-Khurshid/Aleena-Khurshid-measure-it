@@ -92,3 +92,11 @@ Items 5 to 10 and the Plan/PR steps are not started or not complete. A pull requ
 - Item 3 (model): small U-Net trained from scratch on CPU (`models/train_unet.py`, 40 epochs, 160 x 120 input, training-only horizontal-flip augmentation). Best epoch chosen on val. Test (6 images, scored once): mask IoU 0.952, pixel precision 0.994, pixel recall 0.948. Weights `models/unet_small.pt`, sha256 d94c1e31...
 - Caveats: the masks are the classical method's output, so the model learns to match that method, not a human label. The test set has 6 images. mAP@0.5 and mAP@0.5:0.95 are not computed, because they need instance detections, which this model does not produce. Precision and recall are pixel-level.
 
+## Update at 01:30: 74 photos, split v3, retrained model
+
+- Dataset: 74 unique photos with auto-generated paper masks (the 64 from before plus 10 new). Target 70 is met on count. The 6 earlier photos not yet located are not included. Masks are NOT hand-checked.
+- Split: `dataset/split_v3.csv` (seed 42): 52 train, 15 val, 7 test. Committed before the retrain.
+- Model: same small U-Net, 40 epochs, trained on the 52 train photos (with training-only flips). Best epoch chosen on val (val IoU 0.987 at the last epoch).
+- Test (7 images, scored once): mask IoU 0.991, pixel precision 0.997, pixel recall 0.995. Weights `models/unet_small.pt`, sha256 bc2a5494...
+- Caveats: the test metric measures agreement with the auto-generated masks, not human labels. mAP@0.5 and mAP@0.5:0.95 are not computed. The 10 photos are landscape or portrait; undistortion is still NOT verified.
+

@@ -98,7 +98,7 @@ def metrics(logits, y):
 
 def main():
     ids_by_split = {"train": [], "val": [], "test": []}
-    for r in csv.DictReader(open(f"{ROOT}/split_v2.csv")):
+    for r in csv.DictReader(open(f"{ROOT}/split_v3.csv")):
         ids_by_split[r["split"]].append(r["id"])
     print({k: len(v) for k, v in ids_by_split.items()})
 
