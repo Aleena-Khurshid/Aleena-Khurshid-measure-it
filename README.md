@@ -9,7 +9,7 @@ This repository is an honest, partial submission for the Measure It assessment. 
 | Camera calibration | Done. RMS reprojection error 0.092 px on 20 images |
 | Dataset | 10 photos captured; target 70 not met; no masks yet |
 | Model | Not started |
-| Image-to-mm command | Not started |
+| Image-to-mm command | Partial: `inference/measure.py` runs; mm values not valid yet |
 | Accuracy table | Not started |
 
 ## Hardware and software
@@ -40,6 +40,14 @@ python calibration\calibrate.py --images calibration\images --cols 7 --rows 9 --
 ```
 
 Outputs: `calibration\camera_params.npz` and `calibration\calibration_report.json`. The `--square-mm` value should be the calliper-measured size once it is available. It affects only translation vectors, not the camera matrix or distortion.
+
+## Run image to mm (partial)
+
+```powershell
+python inference\measure.py --image path\to\photo.jpg --ref-w-mm 85.6 --ref-h-mm 54.0
+```
+
+Replace the reference size with the calliper-measured size of the cardboard piece. The values above are a placeholder. The script prints paper width and height, the scale, and two rectangularity scores. It writes an overlay image. It prints `RESULT: object not found` or `RESULT: reference not found` when it cannot find the paper or the reference.
 
 ## Dataset summary
 

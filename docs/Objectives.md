@@ -30,7 +30,7 @@ Status is written as it stands at 2026-11-18 00:10 (Asia/Karachi). Nothing here 
 | What is measured | RMS reprojection error of the camera calibration |
 | Target | ≤ 0.5 px |
 | Result | **0.092 px RMS, 0.079 px mean per image, 20 images.** Evidence: `calibration/calibration_report.json`, commit `af5f0ae`. |
-| Caveat | The 20 photos are of a single board on a laptop screen, and are WhatsApp copies (960 × 1280). The distortion coefficients are large (k2 ≈ −1.98, k3 ≈ 4.13), so the undistortion result is not yet verified against straight lines. |
+| Caveat | The 20 photos are of a single board on a laptop screen, and are WhatsApp copies (960 × 1280). The board covers only the centre of the frame, so the distortion at the image edges is not constrained. Undistorted test images show curved edges at the corners, with all five coefficients free (k2 ≈ −1.98, k3 ≈ 4.13) and also with k3 fixed to 0 (k2 ≈ −0.64, RMS 0.165 px). **The undistortion is not reliable, and mm results on undistorted images must not be trusted yet.** |
 
 ## Dataset (supporting)
 

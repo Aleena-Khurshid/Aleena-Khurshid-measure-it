@@ -4,10 +4,10 @@ Checked at 2026-11-18 00:10 (Asia/Karachi). A box is ticked only when the eviden
 
 ## Assessment deliverables
 
-- [x] **1. Calibrated camera.** 20 chessboard photos calibrated with OpenCV. Parameters saved to `calibration/camera_params.npz`. Reprojection error reported: 0.092 px RMS. Evidence: `calibration/calibration_report.json`, commit `af5f0ae`.
+- [~] **1. Calibrated camera.** 20 chessboard photos calibrated with OpenCV. Parameters saved to `calibration/camera_params.npz`. Reprojection error reported: 0.092 px RMS. Evidence: `calibration/calibration_report.json`, commit `af5f0ae`. **Partly done:** the undistortion is not verified. Undistorted images still show curved edges at the corners, because the calibration board does not cover the image edges. Not ticked.
+- [~] **4. Image-to-mm command (partial).** `inference/measure.py` undistorts, finds the paper and the cardboard reference, and prints sizes. It runs on the 3 black-background photos (reference found, rectangularity 0.99). On the 7 brown-carpet photos, the reference is not found, which is the correct output for that case. The mm values are not valid, because the cardboard size is not measured yet, and the undistortion is not reliable. Evidence: commit to follow.
 - [ ] **2. Labelled dataset.** Target 70 original photos, masks, 70/20/10 split. Done so far: 10 photos captured. Not done: labelling, masks, undistortion of the paper photos, and a split that matches the captured images. Evidence of split plan: `dataset/split_v1.csv`, commit `0d4e956` (lists 100 planned IDs; not applied to the captured photos).
 - [ ] **3. Segmentation model.** Not started. No training, no test evaluation.
-- [ ] **4. Image-to-mm command.** Not started. No `inference/` code exists.
 - [ ] **5. Accuracy against calliper.** Not started. No 10-instance table.
 - [ ] **6. Undistortion proof.** Not started.
 
