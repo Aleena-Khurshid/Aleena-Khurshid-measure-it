@@ -2,6 +2,20 @@
 
 Checked at 2026-11-18 00:10 (Asia/Karachi). A box is ticked only when the evidence exists in this repository or in a stated commit.
 
+## Current status (01:50, Asia/Karachi) — supersedes the older status lines below
+
+Older sections below still describe the calibration as 20 photos with free k3 and the earlier dataset counts. Those lines are kept as history. This section is the current state.
+
+| Item | Status | Evidence |
+|---|---|---|
+| 1. Calibrated camera (20+ images, parameters saved, reprojection error) | **Calibration done. Undistortion NOT verified.** | Commit `76a818b`. 21 board photos in `calibration/images/` (c07 excluded). Board is 9 × 7 inner corners, square measured with a ruler as 1.5 cm (15 mm). RMS reprojection error 0.092 px, mean per-image 0.078 px. Saved to `calibration/camera_params.npz` and `calibration/calibration_report.json`. Photos are all portrait (960 × 1280). The earlier 20-photo calibration (commit `af5f0ae`) is replaced; its values are close (fx 1069 vs 1066). Still needed: a check that straight edges stay straight after undistortion, and landscape calibration (or rotate landscape object photos to portrait before undistortion). |
+| 2. Dataset of 70+, masks, fixed 70/20/10 split | **Not done.** | 74 photos with auto-generated paper masks (not hand-checked). Committed split `dataset/split_v3.csv`. Photos are not undistorted. The undistortion requirement is not met. |
+| 3. Trained segmentation model, metrics | **Partly done.** | Small U-Net trained on CPU (`models/train_unet.py`). Test (7 images): mask IoU 0.991, precision 0.997, recall 0.995. Measured against auto-generated masks, not human labels. mAP@0.5 and mAP@0.5:0.95 NOT computed. Architecture rationale not yet written in docs. |
+| 4. One command, image to mm | **Partly done.** | `inference/measure.py` gives width, height, confidence, overlay, and the object-not-found and reference-not-found cases. It uses the classical threshold segmentation, not the U-Net. Undistortion is not verified. Landscape photos are refused by the portrait-only calibration. |
+| 5, 6 | Not started. | — |
+
+Not finished and listed explicitly: items 2, 5 and 6; undistortion verification; mAP metrics; U-Net in the one-command path; architecture rationale in docs; calliper measurements of the reference and the square size.
+
 ## Assessment deliverables
 
 - [~] **1. Calibrated camera.** 20 chessboard photos calibrated with OpenCV. Parameters saved to `calibration/camera_params.npz`. Reprojection error reported: 0.092 px RMS. Evidence: `calibration/calibration_report.json`, commit `af5f0ae`. **Partly done:** the undistortion is not verified. Undistorted images still show curved edges at the corners, because the calibration board does not cover the image edges. Not ticked.
