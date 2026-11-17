@@ -125,3 +125,11 @@ Method: for each of the 21 portrait calibration photos, detect the 9 × 7 inner 
 | Undistorted | 13.3 px | 110.7 px |
 
 Interpretation: undistortion reduces the deviation, but the residual is still large. Perspective keeps straight lines straight, so an accurate undistortion should leave row deviations of a few pixels. The result therefore does NOT verify undistortion. The row ordering from detection may also be wrong in some photos, which was not checked. Item 1 undistortion stays NOT verified. Item 6 (raw vs undistorted measurement error on instances) is not done.
+
+## Rules check (02:00, Asia/Karachi)
+
+- Test split v2 was scored (`58a8065`) and then replaced by v3 with retraining (`e6c8901`, `77f293b`). The reported test metrics are from v3, but the test set was changed after a result was seen. This is disclosed, not hidden.
+- Per-photo numbers in the sections after 00:10 come from scratch folders that are not in this repository. They are not reproducible from the submission and are not evidence.
+- The calibration board is a screen, not a printed board. Sizes were measured with a ruler, not a calliper.
+- Masks are automatic, and the test metrics are measured against them.
+- No recording, no pull request, no calliper table, and no mAP yet.

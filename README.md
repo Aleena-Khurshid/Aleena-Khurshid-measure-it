@@ -84,3 +84,15 @@ Reads `dataset/split_v3.csv`, trains for 40 epochs with seed 42, and writes `mod
 ## Pull request
 
 Not created. `main` does not exist yet. A pull request will be opened only after the author approves.
+
+## Rules check (declared, 02:00 Asia/Karachi)
+
+Checked against the assessment's automatic-rejection list. These are the places where this submission may not meet a rule, stated plainly.
+
+- **Test split changed after its first result.** The split was first `split_v2.csv`, and its test set was scored once (commit `58a8065`). After that, 10 photos were added and the split was changed to `split_v3.csv`, and the model was retrained (`e6c8901`, `77f293b`). The test metrics reported now are from `split_v3`. Because the split was changed after the v2 result was seen, the test set cannot be treated as untouched. Both results are in the git history.
+- **Some mm numbers are not reproducible from this repository.** Per-photo measurements in `docs/Definition_of_Done.md` (sections after 00:10) came from scratch folders and photos that are not committed. Only the 74 dataset photos and masks are in the repository. Those per-photo numbers are not evidence.
+- **Calibration board is not printed.** The assessment asks for a printed checkerboard taped flat. This board is shown on a laptop screen.
+- **Sizes were measured with a ruler, not a calliper.** The assessment asks for a calliper for the square size and reference.
+- **Calibration images are WhatsApp copies (960 × 1280).** The originals were not used.
+- **Masks are automatic, not hand-labelled.** Test metrics are measured against these automatic masks.
+- **No recording, no pull request, and no calliper accuracy table yet.**
