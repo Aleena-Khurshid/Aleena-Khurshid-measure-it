@@ -51,5 +51,17 @@ Deliverables 7–10 are not implemented. They are listed as not done in the Defi
 - **Cost of rejecting the box:** the earlier box measurements (90 × 170 mm front face, 25 mm depth) are not used. The paper is flatter and has a simpler scale, but it is a less interesting object.
 - **Model rejected:** YOLO and Roboflow models are not allowed by the assessment. Mask R-CNN was chosen because it is permitted, has instance masks for the mAP metrics, and can be fine-tuned on CPU at a small input size.
 
+## Change log
+- **2026-11-18 00:10:** Dataset target not met. Shooting was limited by time and battery. Only 10 unique paper photos were captured (7 on brown carpet, 3 on black cloth). The 70/20/10 split committed at `0d4e956` stays as planned but is not applied to the captured photos. Deliverables 3 to 6 are not started. The docs now report this status honestly.
+- **2026-11-17 22:20:** Calibration board changed from a printed board to a hand-drawn board, then to a board shown on a laptop screen, because no printer was available. Calibration with 20 images gives 0.092 px RMS. Evidence: commit `af5f0ae`.
+
 ## 8. Split file
 `dataset/split_v1.csv`: 100 image IDs (img_001 to img_100), shuffled with seed 42. Train 70, val 20, test 10. sha256 is recorded in the commit message.
+
+## Plan changes (recorded 2026-11-18 01:58)
+
+Recorded honestly, because the first draft of this plan above no longer matches what was done:
+- The calibration board is shown on a laptop screen, not printed. Its size is 9 × 7 inner corners, square 15 mm (ruler measured).
+- The reference object is cardboard (129 × 144 mm, ruler measured). The ArUco marker plan was not used.
+- The dataset is 74 photos, not 100. Split is `dataset/split_v3.csv` (52 / 15 / 7).
+- Items 2, 3 and 4 were not completed as planned: masks are automatic, undistortion is not verified, and mAP is not computed.
