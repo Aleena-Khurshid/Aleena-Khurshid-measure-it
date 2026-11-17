@@ -86,3 +86,9 @@ Totals: 71 photos received. 6 rejected in total this round (q09, r05, s01, s03, 
 
 Items 5 to 10 and the Plan/PR steps are not started or not complete. A pull request to main is waiting for the author's approval.
 
+## Update at 01:14: items 2 and 3
+
+- Item 2 (dataset): 64 unique photos have masks (auto-generated paper contours, not hand-checked). The committed split `dataset/split_v2.csv` (seed 42) is 45 train, 13 val, 6 test. Target is 70; 6 photos still unidentified. Not met.
+- Item 3 (model): small U-Net trained from scratch on CPU (`models/train_unet.py`, 40 epochs, 160 x 120 input, training-only horizontal-flip augmentation). Best epoch chosen on val. Test (6 images, scored once): mask IoU 0.952, pixel precision 0.994, pixel recall 0.948. Weights `models/unet_small.pt`, sha256 d94c1e31...
+- Caveats: the masks are the classical method's output, so the model learns to match that method, not a human label. The test set has 6 images. mAP@0.5 and mAP@0.5:0.95 are not computed, because they need instance detections, which this model does not produce. Precision and recall are pixel-level.
+
