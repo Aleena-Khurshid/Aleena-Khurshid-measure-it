@@ -55,3 +55,14 @@ Three of the four results are within 1 to 2% of the ruler estimate of 290 x 205 
 
 Dataset: 65 photos are recorded. Of these, 6 are portrait and match the saved calibration (q02, q03, r01, r11, r12, r13). The other 59 are landscape and cannot be measured with the current calibration.
 
+## Quality check of the 6 newest photos (00:47)
+
+- s01: paper only, cardboard not in frame, blurred. Rejected.
+- s02: both objects visible, motion blur (sharpness 30). Marginal, kept.
+- s03: paper blurred, cardboard not in frame. Rejected.
+- s04: hand over the paper, strong blur (sharpness 12). Rejected.
+- s05: paper corner folded, paper score 0.82. Rejected.
+- s06: both objects in frame and sharp (sharpness 40). Accepted.
+
+Totals: 71 photos received. 6 rejected in total this round (q09, r05, s01, s03, s04, s05). 65 photos are kept, including the marginal s02. Target 70 is not met; 5 more good photos are needed.
+
