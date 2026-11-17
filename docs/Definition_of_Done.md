@@ -66,3 +66,12 @@ Dataset: 65 photos are recorded. Of these, 6 are portrait and match the saved ca
 
 Totals: 71 photos received. 6 rejected in total this round (q09, r05, s01, s03, s04, s05). 65 photos are kept, including the marginal s02. Target 70 is not met; 5 more good photos are needed.
 
+## Final photo count (00:53, checksum-checked)
+
+- The 7 newest photos (t01 to t07) all detect both paper and cardboard and are sharp (sharpness 30 to 44).
+- Checksum check found 2 duplicates in the batches: t01 is the same file as r01, and s02 is the same file as r09. Each was counted once.
+- Batch folders hold 68 files. After removing 6 rejected files (q09, r05, s01, s03, s04, s05; s04 is the same file as n05, which was kept) and 2 duplicates, 60 unique accepted photos remain.
+- Plus the 10 earlier photos, which are 70 in total. These 10 have not yet been checked against the others by checksum.
+- The 70 target is met on count only. Masks, the committed 70/20/10 file list, the model, and the metrics are NOT done.
+- Portrait measurement: t01 gives paper 289.6 x 209.2 mm, the same as r01, because they are the same photo.
+
