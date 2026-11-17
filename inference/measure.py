@@ -18,6 +18,7 @@ import numpy as np
 
 MIN_PAPER_FRACTION = 0.05   # paper must cover at least 5% of the image
 MIN_REF_FRACTION = 0.002    # reference must cover at least 0.2% of the image
+MIN_REF_RECTANGULARITY = 0.90  # reference must look like a rectangle (0.99 on good photos, 0.50 on brown carpet)
 
 
 def undistort(image, calib_path):
@@ -66,7 +67,7 @@ def find_reference(image, paper_contour):
     brown = cv2.morphologyEx(brown, cv2.MORPH_OPEN, kernel)
     brown = cv2.morphologyEx(brown, cv2.MORPH_CLOSE, kernel)
     contour, rectangularity = largest_rect(brown)
-    if contour is None or cv2.contourArea(contour) < MIN_REF_FRACTION * image.shape[0] * image.shape[1]:
+    if contour is None or cv2.contourArea(contour) < MIN_REF_FRACTION * image.shape[0] * image.shape[1] or rectangularity < MIN_REF_RECTANGULARITY:
         return None, 0.0
     return contour, rectangularity
 
