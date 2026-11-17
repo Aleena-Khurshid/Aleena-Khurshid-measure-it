@@ -26,3 +26,11 @@ Checked at 2026-11-18 00:10 (Asia/Karachi). A box is ticked only when the eviden
 - Deliverables 7 to 10 are out of scope by the candidate's choice.
 - The reference object (cardboard piece) size is not yet measured with a calliper. The paper size (about 290 × 205 mm) was measured with a ruler only.
 - The board's square size was measured with a ruler, not a calliper. The board is shown on a laptop screen, not printed.
+
+## Dataset status (checked 2026-11-18 00:45)
+
+- 22 real photos of paper plus cardboard, taken by the author: 10 earlier photos (1200 × 1600, portrait) and 12 new photos (1280 × 960, landscape). Target is 70. Not met.
+- The 12 new photos are landscape. The calibration was made on portrait photos (960 × 1280), so `measure.py` now refuses them with `RESULT: calibration mismatch`. They need a calibration in landscape orientation before they can be measured.
+- Photos are not flipped, and flipped copies are not counted.
+- No masks exist yet. No split is applied to these photos. No model is trained.
+

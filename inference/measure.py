@@ -22,8 +22,22 @@ MIN_REF_RECTANGULARITY = 0.90  # reference must look like a rectangle (0.99 on g
 
 
 def undistort(image, calib_path):
+    """Undistort with the saved calibration.
+
+    The camera matrix is only valid for the calibration image size and
+    orientation. If the photo has a different size, scale fx, cx by the
+    width ratio and fy, cy by the height ratio. If the photo is rotated
+    (landscape vs portrait), the calibration does not apply and we refuse.
+    """
     data = np.load(calib_path)
-    return cv2.undistort(image, data["camera_matrix"], data["dist_coeffs"])
+    K = data["camera_matrix"].astype(np.float64).copy()
+    cal_w, cal_h = int(data["image_width"]), int(data["image_height"])
+    h, w = image.shape[:2]
+    if (w > h) != (cal_w > cal_h):
+        raise ValueError(f"calibration is {cal_w}x{cal_h} (portrait) but photo is {w}x{h} (landscape)")
+    K[0, :] *= w / cal_w
+    K[1, :] *= h / cal_h
+    return cv2.undistort(image, K, data["dist_coeffs"])
 
 
 def largest_rect(mask):
@@ -84,7 +98,11 @@ def main():
     raw = cv2.imread(args.image)
     if raw is None:
         raise SystemExit("Cannot read image.")
-    image = undistort(raw, args.calib)
+    try:
+        image = undistort(raw, args.calib)
+    except ValueError as err:
+        print(f"RESULT: calibration mismatch: {err}")
+        return
 
     paper, paper_rect, _ = find_paper(image)
     if paper is None:
